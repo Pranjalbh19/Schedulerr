@@ -3,6 +3,7 @@ import "./globals.css";
 import {Inter} from 'next/font/google'
 import Header from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
+import CreateEventDrawer from "@/components/ui/create-event";
 
 
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
           </div>
 
         </footer>
+        <CreateEventDrawer></CreateEventDrawer>
       </body>
     </html>
     </ClerkProvider>

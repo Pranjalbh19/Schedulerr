@@ -7,7 +7,7 @@ import {Card,CardContent,CardHeader,CardTitle,CardFooter} from '@/components/ui/
 import {Calendar,Clock,LinkIcon} from 'lucide-react';
 import Testimonials from '@/components/testimonials';
 //  import TestimonialCarousal
-
+import Dashboard from './(main)/dashboard/page';
 const howItWorks = [
   { step: "Sign Up", description: "Create your free Schedulrr account" },
   {
@@ -92,7 +92,7 @@ export default function Home() {
         <CardTitle className ="text-center text-black mb-4 mx-auto">{feature.title}</CardTitle>
       </CardHeader>
       <CardContent className =" text-black text-center">
-        <p>Its me your Dad taking to you </p>
+        <p>Its me your Dad talking to you </p>
       </CardContent>
       <CardFooter>
         <p></p>
