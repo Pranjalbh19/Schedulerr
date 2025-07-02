@@ -1,70 +1,61 @@
-"use client"
-import { useUser } from '@clerk/nextjs'
-import { BarLoader } from 'react-spinners';
-import { Clock ,Calendar,BarChart} from 'lucide-react';
-import React from 'react'
+"use client";
+import { useUser } from "@clerk/nextjs";
+import { BarLoader } from "react-spinners";
+import { Clock, Calendar, BarChart, Users } from "lucide-react";
+import React from "react";
 import { usePathname } from "next/navigation";
-import Link from 'next/link';
-import { Users } from 'lucide-react';
+import Link from "next/link";
+
 const navItems = [
-    { href: "/dashboard", label: "Dashboard", icon: BarChart },
-    { href: "/events", label: "Events", icon: Calendar },
-    { href: "/meetings", label: "Meetings", icon: Users },
-    { href: "/availability", label: "Availability", icon: Clock },
+  { href: "/dashboard", label: "Dashboard", icon: BarChart },
+  { href: "/events", label: "Events", icon: Calendar },
+  { href: "/meetings", label: "Meetings", icon: Users },
+  { href: "/availability", label: "Availability", icon: Clock },
 ];
+
 const layout = ({ children }) => {
-    const pathname = usePathname();
-    const isloaded = useUser();
-    return (
-        <div>
-            {!isloaded && <BarLoader width={"100%"} color="#36d7b7" />}
+  const pathname = usePathname();
+  const isloaded = useUser();
 
-            <div className="flex flex col h-screen bg-blue-50 md:h-screen bg">
+  return (
+    <div>
+      {!isloaded && <BarLoader width={"100%"} color="#36d7b7" />}
 
+      <div className="flex h-screen bg-gray-900 text-white">
+        {/* Sidebar */}
+        <aside className="hidden md:block w-64 bg-gray-800 border-r border-gray-700">
+          <nav>
+            <ul>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`flex items-center px-4 py-4 hover:bg-gray-700 transition ${
+                      pathname === item.href ? "bg-gray-700" : ""
+                    }`}
+                  >
+                    <item.icon className="w-6 h-6 mr-3" />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
 
-                <aside className="hidden md:block w-64 bg-white">
-                    <nav><ul>
-                        {navItems.map((item) => (
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto p-4 md:p-8">
+          <header className="flex justify-between items-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              {navItems.find((item) => item.href === pathname)?.label ||
+                "Dashboard"}
+            </h2>
+          </header>
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+};
 
-                            <li key={item.href}>
-                               
-                            <Link href={item.href} className={`flex items-center px-4 py-4 text-gray-700 hover:bg-gray-100 ${pathname === item.href ? "bg-blue-100" : ""}`}> 
-                             <item.icon className="w-10 h-10 mr-3"></item.icon>{item.label}
-    </Link>
-                                
-                            </li>
-                        ))}
-
-                    </ul></nav>
-
-                </aside>
-
-                <main className="flex-1 overflow-y-auto p-4 md:p-8">
-                    <header className="felx justify-between items-center mb-4">
-                        <h2 className="text-5xl md:text-6xl gradient-title pt-2 md:pt-0 text-center md:text-left w-full">
-                            {navItems.find((item) => item.href === pathname)?.label || "Dashboard"}
-                        </h2>
-
-                    </header>
-                    {children}
-
-                </main>
-                {/* <nav className ="md:hidden fixed bottom=0 left=0 right-0 bg-white shadow-md">
-                    <ul className='flex justify-around'>
-                        {navItems.map((item) => (
-
-                            <li key={item.href}>
-                                <Link href={item.href} className={`flex flex-col items-center py-2 px-4 ${pathname === item.href ? "text-blue-600" : "text-gray-600"}`}>
-                                    {item.label}</Link>
-                            </li>
-                        ))}
-
-                    </ul>
-
-                </nav> */}
-            </div>
-        </div>
-    )
-}
-
-export default layout
+export default layout;

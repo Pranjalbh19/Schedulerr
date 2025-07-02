@@ -29,25 +29,27 @@ export default function RootLayout({ children }) {
         className={inter.className}
       >
         {/*Header*/}
-<Header></Header>
-<main className  = "min-h-screen bg-gradient-to-b from-blue-50 to-white">
+<Header ></Header>
+<main className  = "min-h-screen bg-gradient-to-b from-gray-700 to-black">
 {children}
 
 
 </main>
-
         {/*Footer*/}
-        <footer className = "bg-blue-100 py-12">
-          <div className = "container mx-auto px-4 text-center text-gray-600">
+        <footer className = "bg-gray-600 py-12">
+          <div className = "container mx-auto px-4 text-center text-gray-900">
             <p>
-              Shedule yourself
+              Schedule yourself
             </p>
           </div>
 
         </footer>
-        <CreateEventDrawer></CreateEventDrawer>
+                  <CreateEventDrawer />
+
+
       </body>
     </html>
     </ClerkProvider>
+
   );
 }

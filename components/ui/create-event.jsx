@@ -50,7 +50,6 @@ const CreateEventDrawer = () => {
         variant="outline"
         onClick={() => router.push("?create=true")}
       >
-        Open Drawer
       </Button>
 
       <Drawer open={isOpen} onClose={handleClose}>

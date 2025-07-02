@@ -9,8 +9,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { updateUsername } from "@/actions/users";
 import { BarLoader } from "react-spinners";
-import usefetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/use-fetch";
 import { usernameSchema } from "@/app/lib/validators";
+import { getLatestUpdates } from "@/actions/dashboard";
+import { format } from "date-fns";
+
 export default function DashboardPage() {
   const { user, isLoaded } = useUser();
   const [origin, setOrigin] = useState("");
@@ -29,19 +32,23 @@ export default function DashboardPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded]);
 
-  // useEffect(() => {
-  //   (async () => await fnUpdates())();
-  // }, []);
-
-
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       setOrigin(window.location.origin);
     }
   }, []);
 
-  const { loading, error, fn: fnUpdateUsername } = usefetch(updateUsername);
+  const {
+    loading: loadingUpdates,
+    data: upcomingMeetings,
+    fn: fnUpdates,
+  } = useFetch(getLatestUpdates);
+
+  useEffect(() => {
+    (async () => await fnUpdates())();
+  }, []);
+
+  const { loading, error, fn: fnUpdateUsername } = useFetch(updateUsername);
 
   const onSubmit = async (data) => {
     await fnUpdateUsername(data.username);
@@ -53,6 +60,32 @@ export default function DashboardPage() {
         <CardHeader>
           <CardTitle>Welcome, {user?.firstName}!</CardTitle>
         </CardHeader>
+        <CardContent>
+          {!loadingUpdates ? (
+            <div className="space-y-6 font-light">
+              <div>
+                {upcomingMeetings && upcomingMeetings.length > 0 ? (
+                  <ul className="list-disc pl-5">
+                    {upcomingMeetings.map((meeting) => (
+                      <li key={meeting.id}>
+                        {meeting.event.title} on{" "}
+                        {format(
+                          new Date(meeting.startTime),
+                          "MMM d, yyyy h:mm a"
+                        )}{" "}
+                        with {meeting.name}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No upcoming meetings</p>
+                )}
+              </div>
+            </div>
+          ) : (
+            <p>Loading updates...</p>
+          )}
+        </CardContent>
       </Card>
 
       <Card>
@@ -72,7 +105,7 @@ export default function DashboardPage() {
                 </p>
               )}
               {error && (
-                <p className="text-red-500 text-sm mt-1">{error?.message}</p>
+                <p className="text-red-500 text-sm mt-1">{error.message}</p>
               )}
             </div>
             {loading && (

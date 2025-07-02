@@ -26,17 +26,17 @@ const howItWorks = [
 const features = [
   {
     icon: Calendar,
-    title: "Create Events",
+    title: "Plan Event",
     description: "Easily set up and customize your event types",
   },
   {
     icon: Clock,
-    title: "Manage Availability",
+    title: "Update Your Hours",
     description: "Define your availability to streamline scheduling",
   },
   {
     icon: LinkIcon,
-    title: "Custom Links",
+    title: "Scheduling Links",
     description: "Share your personalized scheduling link",
   },
 ];
@@ -48,10 +48,10 @@ export default function Home() {
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-24">
         {/* Text Content */}
         <div className="lg:w-1/2">
-          <h1 className="text-7xl font-extrabold gradient-title pb-6">
-            Simplify Your Scheduling
+          <h1 className="text-7xl text-white font-extrabold  pb-6">
+            Schedule you and your work
           </h1>
-          <p className="text-xl text-gray-600 mb-10">
+          <p className="text-xl text-gray-400 mb-10">
             Schedulrr helps you manage your time effectively. Create events, set
             your availability, and let others book time with you seamlessly.
           </p>
@@ -66,33 +66,34 @@ export default function Home() {
 
         {/* Image */}
         <div className="lg:w-1/2 flex justify-center">
-          <div className="relative w-104 h-84 ">
-            <Image
-              src="/poster.png"
-              alt="Scheduling illustration"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
+  <div className="relative w-[420px] h-[336px] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 backdrop-blur-sm">
+    <Image
+      src="/poster.png"
+      alt="Scheduling illustration"
+      fill
+      className="object-cover transition-transform duration-500 hover:scale-105"
+    />
+  </div>
+</div>
+
       </div>
 
 
 
  <div className ="mb-24">
-  <h2 className ="text-3xl font-bold text-center mb-12 text-shadow-black"> Key Features</h2>
+  <h2 className ="text-3xl font-bold text-center mb-12 text-white"> User Experience</h2>
 
   <div className = "grid grid-cols-1 md:grid-cols-3 gap-8">{features.map((feature,index)=>{
     
 
     return (
-      <Card key ={index}>
+      <Card key ={index} className= "bg-black  border-gray-700" >
       <CardHeader>
-        <feature.icon className ="w-12 h-12 text-black mb-4 mx-auto"></feature.icon>
-        <CardTitle className ="text-center text-black mb-4 mx-auto">{feature.title}</CardTitle>
+        <feature.icon className ="w-12 h-12 text-white mb-4 mx-auto"></feature.icon>
+        <CardTitle className ="text-center text-blue-600 mb-4 mx-auto">{feature.title}</CardTitle>
       </CardHeader>
-      <CardContent className =" text-black text-center">
-        <p>Its me your Dad talking to you </p>
+      <CardContent className =" text-white text-center">
+        <p>{feature.description} </p>
       </CardContent>
       <CardFooter>
         <p></p>
@@ -108,14 +109,14 @@ export default function Home() {
  </div>
 
  <div className ="mb-24">
-  <h2 className ="text-3xl font-bold text-center mb-12 text-shadow-black"> Key Features</h2>
+  <h2 className ="text-3xl font-bold text-center mb-12 text-white"> Key Features</h2>
 <Testimonials></Testimonials>
 </div>
 
 
 
 <div className="mb-24">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-600">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">
           How It Works
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -133,9 +134,9 @@ export default function Home() {
         </div>
       </div> 
 
-  <div  className = "bg-blue-600 text-white rounded-lg p-8 text-center">
-  <h2>Simplify your Scheduling</h2>
-<p>Join thousand of Proffessionals who trust Scheduler for best time management</p>
+  <div  className = "bg- text-white rounded-lg p-8 text-center">
+  <h2>Simplify your Work by Scheduling</h2>
+<p>Join thousand of Professionals who trust Scheduler for best time management</p>
 <Link href = "/dashboard">
 
 <Button size = 'lg' variant ='secondary className = 'text-blue-600="true">
