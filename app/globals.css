@@ -50,13 +50,9 @@
 
 /* Hide scrollbar for IE, Edge, and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-
-
-
 
 :root {
   --radius: 0.625rem;
@@ -135,10 +131,12 @@
     @apply bg-background text-foreground;
   }
 }
-@layer utilities {
-  .text-balance { text-wrap: balance;}
- .gradient-title {
-  @apply font-extrabold bg-gradient-to-br from-blue-600 to-blue-400 bg-clip-text tracking-tighter text-transparent pb-4 pr-2;
 
-  
- }}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .gradient-title {
+    @apply font-extrabold bg-gradient-to-br from-blue-600 to-blue-400 bg-clip-text tracking-tighter text-transparent pb-4 pr-2;
+  }
+}
