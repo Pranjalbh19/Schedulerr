@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🗓️ Schedulrr
 
-## Getting Started
+Schedulrr is a modern, full-stack meeting scheduling platform built with **Next.js**, **Tailwind CSS**, **Clerk**, and **Prisma**. It lets users create time slots, manage availability, and share personalized booking links — all with a sleek, responsive UI.
 
-First, run the development server:
+[🔗 Live Demo](https://schedulrr.vercel.app)
 
-```bash
+---
+
+## 🚀 Tech Stack
+
+![Next.js](https://img.shields.io/badge/Next.js-000?logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Clerk](https://img.shields.io/badge/Clerk-F02E65?logo=clerk&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+
+---
+
+## ✨ Features
+
+- ✅ User authentication via Clerk
+- ✅ Create and manage meeting events
+- ✅ Set availability and generate time slots
+- ✅ Clean, responsive UI with dark/light mode
+- ✅ Dynamic calendar-based booking system
+- ✅ Secure API routes with server-side validation
+- ✅ Smooth animations with `tailwindcss-animate`
+
+---
+
+## 📸 Screenshots
+
+> Make sure to replace paths with your actual image paths
+📁 public/screenshots/
+├── home.png
+├── create-meeting.png
+└── availability.png
+
+
+
+![Home Page](./public/screenshots/home.png)
+![Create Meeting](./public/screenshots/create-meeting.png)
+![Availability](./public/screenshots/availability.png)
+📂 Project Structure
+
+.
+├── app/                 # Next.js app directory
+│   ├── page.tsx         # Main entry
+│   ├── layout.tsx       # Root layout
+│   └── globals.css      # Tailwind + custom CSS
+├── components/          # Reusable UI components
+├── lib/                 # Helper functions (slot generator, utils)
+├── prisma/              # Schema and migration files
+├── public/              # Static assets (icons, screenshots)
+├── tailwind.config.js   # Tailwind customization
+└── postcss.config.js    # PostCSS plugins
+🧑‍💻 Getting Started
+
+# Clone the repo
+git clone https://github.com/yourusername/schedulrr.git
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Generate Prisma client
+npx prisma generate
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 to view the app.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔮 Upcoming Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔄 Google Calendar sync
+✉️ Email notifications and reminders
+📊 Admin dashboard with analytics
+📱 PWA support
