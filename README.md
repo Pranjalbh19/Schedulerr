@@ -2,7 +2,7 @@
 
 Schedulrr is a modern, full-stack meeting scheduling platform built with **Next.js**, **Tailwind CSS**, **Clerk**, and **Prisma**. It lets users create time slots, manage availability, and share personalized booking links — all with a sleek, responsive UI.
 
-[🔗 Live Demo](https://schedulrr.vercel.app)
+[
 
 ---
 
